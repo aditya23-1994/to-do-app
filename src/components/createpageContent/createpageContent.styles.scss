@@ -1,0 +1,238 @@
+.Form-content {
+    display: flex; 
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        margin: 40px 40px 40px 80px;
+        width: 40%;
+        height: 40%;
+
+
+        input {
+            outline: none;
+            display: block;
+            background: rgba(#000000, 0.1);
+            width: 75%;
+            height: 30px;
+            border: 0;
+            border-radius: 4px;
+            box-sizing: border-box;
+            padding: 12px 20px;
+            color: rgba(#000000, 0.1);
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: 500;
+            line-height: inherit;
+            transition: 0.3s ease;
+      
+            &:focus {
+              color: rgba(#000000, 0.8);
+            }        
+        }
+
+        p {
+            display: block;
+            margin: 20px 0 10px;
+            color: rgba(#000000, 0.6);
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            text-transform: capitalize;
+            letter-spacing: .1em;
+        }
+
+}
+
+}
+
+
+
+.radio-group, .radio-group-2{
+border: solid 3px lighten(#332f35,20%);
+display: inline-block;
+margin: 20px;
+border-radius: 5px;
+overflow: hidden;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+-ms-border-radius: 5px;
+-o-border-radius: 5px;
+
+input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+    }
+    
+    label {
+    color: lighten(#333,40%);
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 20px;
+    }
+    
+    input[type=radio]:checked + label{
+    color: lighten(#fff,60%);
+    background: #4c9A2A;
+    }
+    
+    label + input[type=radio] + label {
+    border-left: solid 3px lighten(#332f35,20%);
+}
+
+}
+
+.btn-together {
+    margin: 20px;
+    padding-right: 20px;
+}
+
+
+.Form-content__side {
+    margin: 80px 20px 20px 20px;
+    width: 60%;
+    height: 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+
+    input {
+        outline: none;
+        display: block;
+        background: rgba(#000000, 0.1);
+        width: 150%;
+        height: 30px;
+        border: 0;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: rgba(#000000, 0.1);
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: 500;
+        line-height: inherit;
+        transition: 0.3s ease;
+  
+        &:focus {
+          color: rgba(#000000, 0.8);
+          border: #4c9A2A;
+        }        
+    }
+}
+
+.inline-form {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid rgba(#000000, 0.1);
+  width: 60%;
+
+}
+
+.Form-content__side-input{
+  margin: 6px;
+
+}
+.check {
+    cursor: pointer;
+    position: relative;
+    margin: auto;
+    width: 18px;
+    height: 18px;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+  }
+  .check:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(34,50,84,0.03);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .check svg {
+    position: relative;
+    z-index: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #c8ccd4;
+    stroke-width: 1.5;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease;
+  }
+  .check svg path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+  }
+  .check svg polyline {
+    stroke-dasharray: 22;
+    stroke-dashoffset: 66;
+  }
+  .check:hover:before {
+    opacity: 1;
+  }
+  .check:hover svg {
+    stroke: #4285f4;
+  }
+  #cbx:checked + .check svg {
+    stroke: #4285f4;
+  }
+  #cbx:checked + .check svg path {
+    stroke-dashoffset: 60;
+    transition: all 0.3s linear;
+  }
+  #cbx:checked + .check svg polyline {
+    stroke-dashoffset: 42;
+    transition: all 0.2s linear;
+    transition-delay: 0.15s;
+  }
+
+  .btn-3{
+    margin-top: -18px;
+    margin-left: 80px;
+
+    &:focus{
+      color: transparent;
+      outline: none;
+      border: none;
+    }
+
+    input[type='submit']:focus{
+      outline: none;
+      border: none;
+    }
+  }
+
+  .Form-content__main--btn-3{
+    border: none;
+    background-color: transparent;
+    position: relative;
+
+
+ .ion-icon{
+   font-size: 27px;
+   position: absolute;
+   z-index: 999;
+   margin-top: -10px;
+  }
+ }
+
+.button-to-add {
+  border: none;
+  color: #333;
+  background-color: transparent;
+  margin:20px 10px;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #4285f4;
+
+  &:focus {
+    outline: #4c9A2A;
+  }
+}
