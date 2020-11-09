@@ -41,7 +41,8 @@ class App extends React.Component {
         id: '',
         text: '',
         isDone: false,
-      }
+      },
+      redirect: null,
 
   }
 
@@ -134,11 +135,21 @@ class App extends React.Component {
       )
   }
 
+  deleteTask = (id, e) => {
+    e.preventDefault();
+    let newTodo = this.state.todo.filter(todo=> (todo.id !== id));
+    this.setState({todo:[...newTodo]}, ()=>
+    this.setState({redirect: "/"}));
+
+  }
 
   render(){
+    if (this.state.redirect){
+      return <Redirect to={this.state.redirect}/>
+    }
     return (
     <div>
-
+      
       <Route exact path='/'  render={(props) =><ToDo 
                               todo={this.state.todo} 
                                {...props}/>} />
