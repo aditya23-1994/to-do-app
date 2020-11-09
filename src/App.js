@@ -1,5 +1,5 @@
 import React from 'react';
-import ToDo from './pages/todo/todo.component';
+import {ToDo} from './pages/todo/todo.component';
 import { CreateTask } from './pages/createPage/createpage.component';
 import { UpdateTask } from './pages/updatePage/updatepage.component';
 import { Redirect, Route } from 'react-router-dom';
@@ -9,7 +9,25 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      todo:[],
+      todo:[{id:'1',
+       title:'hello world', 
+       desc:'this is a desc',
+       branch:'todo',
+       tag:'personal',
+       date:'24',
+      items:[{text:'sub 1',id:'4',isDone:false,refId:'1'},{text:'sub 2',id:'5',isDone:false,refId:'1'}]},
+       {id:'2',
+        title:'hello aditya',
+         desc:'this is a desc for aditya',
+       branch:'inProgress',
+       tag:'official',date:'24',
+        items:[{text:'sub 1', id:'6',isDone:false,refId:'2'},{text:'sub 2', id:'7',isDone:false,refId:'2'}]},
+       {id:'3',
+        title:'hello React',
+         desc:'this is a desc for React',
+       branch:'done',
+       tag:'misc',date:'24',
+        items:[{text:'sub 1', id:'8',isDone:false,refId:'3'},{text:'sub 2', id:'9',isDone:false,refId:'3'}]} ],
       values:{ id: '',
          title: '', 
               desc: '', 
@@ -27,29 +45,29 @@ class App extends React.Component {
 
   }
 
-
-
   }
 
-  submitTasks = () => {
-    let taskId =   this.state.todo[this.state.todo.length - 1].id;
+  submitTasks = (e) => {
+    e.preventDefault();
+    let taskId = this.state.todo[this.state.todo.length - 1].id;
     let Id = nextId();
 //Creating a variable list to find and hold the to-do item.
-    let todoTask=this.state.todo.filter(todo =>(todo.id === taskId));
+    let todoTask= this.state.todo.filter(todo =>(todo.id === taskId));
     const tempTodo = todoTask[0];
 
 //Creating a new todo list which does not have the old todo list.
     let newTodo = this.state.todo.filter(todo =>todo.id !== taskId);
 
     this.setState({tasks: {...this.state.tasks, id: Id, refId: taskId}},()=>(
-    this.setState({values: {...tempTodo, items: [this.state.tasks]}},
+    this.setState({values: {...tempTodo, items: [...tempTodo.items,this.state.tasks]}},
       ()=>{
         this.setState({todo: [...newTodo,this.state.values]}, () =>{
-
+          e.target.reset();
+  
           this.setState({values:
           {id: '', 'title': '', 'desc': '', 'branch': '', tag: '', date: '',items:[]},
-          tasks:{refID:'', id: '', text: '', isDone:false}})
-        })
+          tasks:{refId:'', id: '', text: '', isDone:false}})
+        })  
       })
     ));
   }
@@ -86,21 +104,40 @@ class App extends React.Component {
     this.setState({tasks: {...this.state.tasks, isDone: e.target.checked}});
   }
 
+  editCheckbox = (id, refId, e) => {
+
+    let value = this.state.todo.filter(todo=> (todo.id === refId));
+    let todo = this.state.todo.filter(todo=> (todo.id !== refId));
+    let item = value[0].items.filter(item=> (item.id === id));
+    let items = value[0].items.filter(item=> (item.id !== id) );
+    let newItem = item[0];
+    let newValue = value[0];
+    this.setState({tasks:{...newItem, isDone: e.target.checked}}, ()=>{
+    this.setState({values:{...newValue,items:[...items, this.state.tasks]}}, ()=>{
+    this.setState({todo:[...todo, this.state.values]})},()=> console.log(this.state))
+    })
+    
+  }
+
   render(){
     return (
     <div>
 
-      <Route exact path='/'  component={ToDo} />
+      <Route exact path='/'  render={(props) =><ToDo 
+                              todo={this.state.todo} 
+                              editCheckbox={this.editCheckbox}/>} />
       <Route exact path='/create-task' 
       render={ ({match, history}) => <CreateTask 
                 match= {match}
                 history={history}
                 submitTasks = {this.submitTasks}
+                taskChange = {this.taskChange}
                 handleChange = {this.handleChange}
                 handleSubmit = {this.handleSubmit}
                 checkboxChange = {this.checkboxChange}
                 values = {this.state.values}
-                tasks = {this.state.tasks}  />} />
+                tasks = {this.state.tasks}
+                todo = {this.state.todo}  />} />
       <Route exact path='/update-task' 
                 render={ ({match, history}) => <UpdateTask 
                           match= {match}
@@ -109,8 +146,7 @@ class App extends React.Component {
                           handleChange = {this.handleChange}
                           handleSubmit = {this.handleSubmit}
                           checkboxChange = {this.checkboxChange}
-                          values = {this.state.values}
-                          tasks = {this.state.tasks}  />} />
+                          todo = {this.state.todo}  />}/>
     </div>
   )}
 }

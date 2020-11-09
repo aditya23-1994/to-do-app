@@ -1,28 +1,36 @@
 import React from 'react';
 import './card.styles.scss';
 
-export const Card = (props) => {
+export const Card = ({editCheckbox, ...todo}) => {
+
+   const  {tag,  title, date, desc, items } = todo;
     return (
 
         <div className='card'>
             <div className='card__item-1'>
-                <p className='card__item-1__header'>Personal</p>
+                <p className='card__item-1__header'>{tag}</p>
                 <p>Nav</p>
             </div>
             <div className='card__item-2'>
-                <p className='card__item-2__title'>Task Name</p>
-                <p className='card__item-2__title'>Date</p>
+                <p className='card__item-2__title'>{title}</p>
+                <p className='card__item-2__title'>{date}</p>
             </div>
             <div className='card__item-3'>
-                <p>description is a must should be aligned properly hence this is a test so far test are pretty good</p>
+                <p>{desc}</p>
             </div> 
             <div className='card__sub-tasks'>
-                <ul>
-                    <li className='card__sub-tasks-lists'><input type='checkbox' />sub task</li>
-                    <li className='card__sub-tasks-lists'><input type='checkbox' />sub task</li>
-                    <li className='card__sub-tasks-lists'><input type='checkbox' />sub task</li>
-                    <li className='card__sub-tasks-lists'><input type='checkbox' />sub task</li>
-                    <li className='card__sub-tasks-lists'><input type='checkbox' />sub task</li>
+                <ul> 
+  
+                            
+                    {items ? items.map(item=>(
+                        <div key={item.id}>
+
+                        <li className='card__sub-tasks-lists'>
+                            <input type='checkbox' onClick={(e)=>editCheckbox(item.id, item.refId, e)} />
+                            {item.text}</li>
+                        </div>
+                        )) : <h3>"no tasks added" </h3>  
+                    }    
                 </ul>
             </div>
         </div>

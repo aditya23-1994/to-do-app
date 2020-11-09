@@ -1,7 +1,7 @@
 import React from 'react';
 import './maincontent.styles.scss';
 import {TodoContainer, InProgressContainer, DoneContainer} from '../container/container.component';
-
+import {Link} from 'react-router-dom';
 
 let date = new Date().toLocaleDateString();
 let currDate = date.replace('/', '-').replace('/','-');
@@ -14,7 +14,7 @@ export const MainContent = (props) => (
                 <input className='search-input' type='search' placeholder='search task Titles' />
             </div>
             <div className='rest-elements'>
-                <button className='button-task'>new task</button>
+                <Link to='/create-task'><button className='button-task'>new task</button></Link>
                 <div className='date'>
                 <ion-icon name="calendar-clear-outline"></ion-icon>
                     <p class='date-value'>{ currDate }</p>
@@ -22,9 +22,9 @@ export const MainContent = (props) => (
             </div>
         </div>
         <div className='content'>
-            <TodoContainer/>
-            <InProgressContainer />
-            <DoneContainer/>
+            <TodoContainer {...props}/>
+            <InProgressContainer {...props} />
+            <DoneContainer {...props}/>
         </div>
     </div>
 )

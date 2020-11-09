@@ -9,7 +9,7 @@ import './createpage.styles.scss';
 
 export const CreateTask = (props) => {
 
-     const {handleSubmit, handleChange, checkboxChange, submitTasks, values, tasks} = props;
+     const {handleSubmit, taskChange, handleChange, checkboxChange, submitTasks, values, tasks, todo} = props;
     return (
         <div className='homepage'>
             <Sidebar className='sidebar'/>
@@ -17,7 +17,8 @@ export const CreateTask = (props) => {
             <Route exact path='/create-task' render={({match, history})=><CreatePageContent
                              handleSubmit={handleSubmit}
                              match = {match} history={history} 
-                             handleChange={handleChange} {...values} tasks={tasks}
+                             taskChange={taskChange}
+                             handleChange={handleChange} {...values} tasks={tasks} todo ={todo}
                              checkboxChange={checkboxChange}
                              submitTasks={submitTasks} />}/>
 

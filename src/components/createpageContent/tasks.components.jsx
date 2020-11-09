@@ -1,9 +1,10 @@
+import { Button } from '@material-ui/core';
 import React from 'react';
 
 
 export const Tasks = (props) => {
 
-    const {handleChange,checkboxChange, submitTasks, ...tasks} = props;
+    const {taskChange, checkboxChange, submitTasks, ...tasks} = props;
     return (
         <form className='inline-form' onSubmit={submitTasks}>
         <div className='Form-content__side-input'>
@@ -17,11 +18,11 @@ export const Tasks = (props) => {
         </label>
         </div>
         <div>
-        <input name='text' value={tasks.text} onChange={handleChange} /></div>
+        <input name='text' value={tasks.text} onChange={taskChange} /></div>
         <div className='btn-3'>
-        <button className='Form-content__main--btn-3' 
-        type='submit'><ion-icon name="checkmark-done-outline"></ion-icon>
-        </button>
+        <Button className='Form-content__main--btn-3' 
+        type='submit'>submit
+        </Button>
         </div>
         </form>
     )

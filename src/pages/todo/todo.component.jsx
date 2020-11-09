@@ -5,21 +5,15 @@ import { CreateTask } from '../createPage/createpage.component';
 import {Route} from 'react-router-dom';
 import './todo.styles.scss';
 
-class ToDo extends React.Component {
+export const ToDo = (props) => {
+    
 
-    render(){
         return(
             <div>
-                <h1>Hello World!</h1>
                 <div className='homepage'>
                     <Sidebar className='sidebar'/>
-                    <MainContent className='main-content'/>
+                    <MainContent className='main-content' {...props}/>
                 </div>
             </div>
         )
     }
-
-}
-
-
-export default ToDo;
