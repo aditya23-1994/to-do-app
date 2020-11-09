@@ -19,14 +19,15 @@ export const TodoContainer = (props) => {
     )
 };
 
-export const InProgressContainer = ({todo}) => {
+export const InProgressContainer = (props) => {
+    const {todo, editCheckbox} = props;
     return(
         <div className="content-item">
             <p className="container-title container-title-2">in-progress</p>
             <div className="content__card">
             {todo.filter(todo=>(todo.branch === 'inProgress')).map(todo =>
                 <div key={todo.id}>
-                    <Card {...todo} />
+                    <Card {...todo} editCheckbox={editCheckbox} />
                 </div>
                 )} 
         </div>
@@ -34,14 +35,15 @@ export const InProgressContainer = ({todo}) => {
     )
 };
 
-export const DoneContainer = ({todo}) => {
+export const DoneContainer = (props) => {
+    const {todo, editCheckbox} = props;
     return(
         <div className="content-item">
             <p className="container-title container-title-3">Done</p>
             <div className="content__card">
             {todo.filter(todo=>(todo.branch === 'done')).map(todo =>
                 <div key={todo.id}>
-                    <Card {...todo} />
+                    <Card {...todo} editCheckbox={editCheckbox}  />
                 </div>
                 )} 
             </div>

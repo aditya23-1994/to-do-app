@@ -2,7 +2,6 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { Sidebar } from '../../components/sidebar/sidebar.component';
 import { CreatePageContent } from '../../components/createpageContent/createpageContent.component';
-import { UpdateTask } from '../../components/update/update.component';
 import '../../components/sidebar/sidebar.styles.scss';
 import '../../pages/todo/todo.styles.scss';
 import './createpage.styles.scss';

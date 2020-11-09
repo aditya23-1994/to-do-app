@@ -19,10 +19,10 @@
             border-radius: 4px;
             box-sizing: border-box;
             padding: 12px 20px;
-            color: rgba(#000000, 0.1);
+            color: rgba(#000000, 0.9);
             font-family: inherit;
             font-size: inherit;
-            font-weight: 500;
+            font-weight: 700;
             line-height: inherit;
             transition: 0.3s ease;
       
@@ -66,7 +66,7 @@ input[type=radio] {
     }
     
     label {
-    color: lighten(#333,40%);
+    color: lighten(#333,20%);
     display: inline-block;
     cursor: pointer;
     font-weight: bold;
@@ -79,7 +79,7 @@ input[type=radio] {
     }
     
     label + input[type=radio] + label {
-    border-left: solid 3px lighten(#332f35,20%);
+    border-left: solid 3px lighten(#332f35,10%);
 }
 
 }
@@ -87,7 +87,9 @@ input[type=radio] {
 .btn-together {
     margin: 20px;
     padding-right: 20px;
-}
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
 
 
 .Form-content__side {
@@ -103,12 +105,12 @@ input[type=radio] {
         outline: none;
         display: block;
         background: rgba(#000000, 0.1);
-        width: 150%;
+        width: 180%;
         height: 30px;
         border: 0;
         border-radius: 4px;
         box-sizing: border-box;
-        color: rgba(#000000, 0.1);
+        color: rgba(#000000, 0.9);
         font-family: inherit;
         font-size: inherit;
         font-weight: 500;
@@ -194,8 +196,8 @@ input[type=radio] {
   }
 
   .btn-3{
-    margin-top: -18px;
-    margin-left: 80px;
+    margin-top: -5px;
+    margin-left: 150px;
 
     &:focus{
       color: transparent;

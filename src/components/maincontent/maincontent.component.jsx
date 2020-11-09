@@ -26,5 +26,6 @@ export const MainContent = (props) => (
             <InProgressContainer {...props} />
             <DoneContainer {...props}/>
         </div>
+
     </div>
 )
