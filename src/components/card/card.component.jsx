@@ -1,5 +1,6 @@
 import React from 'react';
 import './card.styles.scss';
+import {Link} from 'react-router-dom'
 
 export const Card = ({editCheckbox, ...todo}) => {
 
@@ -9,7 +10,7 @@ export const Card = ({editCheckbox, ...todo}) => {
         <div className='card'>
             <div className='card__item-1'>
                 <p className='card__item-1__header'>{tag}</p>
-                <p>Nav</p>
+                <Link to={`/edit/${todo.id}`}><button className='card__item-1__header-btn'>edit</button></Link>
             </div>
             <div className='card__item-2'>
                 <p className='card__item-2__title'>{title}</p>

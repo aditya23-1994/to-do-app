@@ -2,20 +2,22 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Button} from '@material-ui/core';
 import {Tasks} from './editTask.component';
+import {TaskCard} from '../card/taskCard.component';
 import '../createpageContent/createpageContent.styles.scss';
 import './edit.styles.scss';
 
 export const EditTodo = (props) => 
 {   
-    const {submitEditedTask, handleEditChange, todo, ...values} = props;     
+    const {submitEditedTask, deleteTodo, deleteTask, editCheckbox, handleEditChange, todo, ...values} = props;     
        return (
         <div className='homepage'>
     <div className='createpage'>
     <div className='createpage__head'>
     <Link to='/'><button className='createpage__head--back'>
-    </button></Link>
     <ion-icon className='createpage__head--icon' name="arrow-back-outline"></ion-icon>
-    <p className='createpage__head--para'>Create Task</p>
+    </button></Link>
+    
+    <p className='createpage__head--para'>Edit Task</p>
     </div>
     <div className='Form-content'>
     <div className='Form-content__main'>
@@ -63,8 +65,9 @@ export const EditTodo = (props) =>
             <input type='date' name='date' value={values.date} onChange={handleEditChange}/>
             </div>
             <div className='btn-together'>
-            <Button type='submit'className='form-content__main--btn-1'>Cancel</Button>
-            <Button  className='Form-content__main--btn'  type='submit'>Update</Button>           
+            <Button type='submit'className='form-content__main--btn-1' onClick={(e)=>deleteTodo(todo.id, e) }>Delete</Button>
+            <Button  className='Form-content__main--btn'  type='submit'>Update</Button> 
+
             </div>                
         </form>
     </div>
@@ -72,6 +75,13 @@ export const EditTodo = (props) =>
         <Tasks {...props}/>
     <div>
         <button className= 'button-to-add'>&#43; <span>Add more Tasks</span></button>
+    </div>
+    <div>
+        {todo.items.map(item=>
+            <div key={item.id} className='cardTask'>
+                <TaskCard items={item} editCheckbox={editCheckbox} deleteTask={deleteTask}/>
+            </div>
+        )}
     </div>
     </div>
     </div>

@@ -12,8 +12,8 @@ export const CreatePageContent = (props) => {
         <div className='createpage'>
         <div className='createpage__head'>
             <Link to='/'><button className='createpage__head--back'>
-            </button></Link>
-            <ion-icon className='createpage__head--icon' name="arrow-back-outline"></ion-icon>
+            
+            <ion-icon className='createpage__head--icon' name="arrow-back-outline"></ion-icon></button></Link>
             <p className='createpage__head--para'>Create Task</p>
         </div>
         <div className='Form-content'>

@@ -3,11 +3,11 @@ import React from 'react';
 
 
 export const Tasks = (props) => {
-
-    const {taskChange, checkboxChange, submitTasks, ...tasks} = props;
+    
+    const {taskChange, checkboxChange, submitEditedTodo,todo, ...tasks} = props;
     return (
 
-        <form className='inline-form' onSubmit={submitTasks}>
+        <form className='inline-form' onSubmit={(e)=>submitEditedTodo(todo.id, e)}>
         <div className='Form-content__side-input'>
         <input type='checkbox' className='checkbox-main' id='cbx' checked={tasks.isDone} onChange={checkboxChange} style={{display: 'none'}} />
         <label for="cbx" className="check">
